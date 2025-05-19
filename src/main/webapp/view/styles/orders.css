@@ -1,0 +1,86 @@
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background-color: #f8f0ff;
+    padding: 40px;
+    font-size: 18px;
+    color: #4a006e;
+}
+
+h2 {
+    text-align: center;
+    color: #5e2a92;
+    margin-bottom: 30px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 30px;
+    font-size: 16px;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 12px;
+    text-align: center;
+}
+
+th {
+    background-color: #d4b5f9;
+}
+
+input[type="number"] {
+    width: 60px;
+    padding: 6px;
+    border-radius: 5px;
+    border: 1px solid #c5a4e0;
+    font-size: 16px;
+    text-align: center;
+}
+
+.form-group {
+    margin: 20px auto;
+    max-width: 400px;
+}
+
+.form-label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: bold;
+    color: #5b2a92;
+}
+
+.form-group input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #c5a4e0;
+    border-radius: 5px;
+    background-color: #fff9ff;
+    font-size: 16px;
+    box-sizing: border-box;
+}
+
+.total {
+    font-weight: bold;
+    font-size: 20px;
+    margin-top: 30px;
+    text-align: center;
+    color: #4b006e;
+}
+
+button {
+    background-color: #9e6cfb;
+    color: white;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 18px;
+    display: block;
+    margin: 30px auto 0 auto;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #814dd0;
+}
