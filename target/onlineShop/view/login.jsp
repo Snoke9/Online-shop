@@ -4,6 +4,12 @@
 <head>
   <title>Вход</title>
   <style><%@include file="styles/login.css"%></style>
+  <% if (session.getAttribute("errorMessage") != null) { %>
+  <script>
+    alert('<%= session.getAttribute("errorMessage") %>');
+  </script>
+  <% session.removeAttribute("errorMessage"); %>
+  <% } %>
 </head>
 <body>
 <div class="form-container">

@@ -12,9 +12,17 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 
 @WebServlet("/")
 public class LoginServlet extends HttpServlet {
+    public void init() throws ServletException {
+        Store.addProduct(new Product("Андроид", "Робот работает за тебя", 999999f));
+        Store.addProduct(new Product("Мерседес GLE Coupe d450", "Авто для хасла", 1499999f));
+        Store.addProduct(new Product("Телевизор", "52-дюймовый 4K Smart TV Optima OS WW Xiaomi LG", 499999f));
+    }
+
+
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         RequestDispatcher requestDispatcher = req.getRequestDispatcher("view/login.jsp");
         requestDispatcher.forward(req, resp);
@@ -40,7 +48,8 @@ public class LoginServlet extends HttpServlet {
                     }
                 }
                 if (!found) {
-                    resp.sendError(HttpServletResponse.SC_UNAUTHORIZED);
+                    session.setAttribute("errorMessage", "Неверное имя пользователя или пароль");
+                    resp.sendRedirect("/login");
                 }
             }
         }

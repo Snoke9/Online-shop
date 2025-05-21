@@ -18,6 +18,13 @@
       document.getElementById("totalPriceInput").value = total.toFixed(2);
     }
   </script>
+
+  <% if (session.getAttribute("errorMessage") != null) { %>
+  <script>
+    alert('<%= session.getAttribute("errorMessage") %>');
+  </script>
+  <% session.removeAttribute("errorMessage"); %>
+  <% } %>
 </head>
 <body>
 
@@ -60,7 +67,7 @@
   </div>
 
   <div class="total">
-    <input type="hidden" name="totalPrice" id="totalPriceInput" />
+    <input type="hidden" name="totalPrice" id="totalPriceInput" value="0" />
     Итого: <span id="totalSum">0.00</span> ₽
   </div>
 
