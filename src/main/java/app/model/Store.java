@@ -40,10 +40,6 @@ public class Store {
         return products;
     }
 
-//    public static void createOrder(String user_name, int productId, String address) {
-//        products.stream().filter(prod -> prod.getId() == productId).findFirst().ifPresent(p -> orders.add(new Order(new User(user_name), p, address)));
-//    }
-
     public static void createOrder(Order order) {
         orders.add(order);
     }

@@ -6,10 +6,8 @@ import app.entities.User;
 import app.model.Store;
 
 import jakarta.servlet.*;
-import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.*;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,19 +20,18 @@ public class OrderServlet extends HttpServlet {
 
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HttpSession session = req.getSession(false); // false — чтобы не создавать новую сессию
-        User user = (User) session.getAttribute("user");
-        //System.out.println(((User) session.getAttribute("user")).getName());
+        User user = (User) session.getAttribute("user");;
 
         String action = req.getParameter("action");
-        String firstName = req.getParameter("firstName");
-        String lastName = req.getParameter("lastName");
-        String phoneNumber = req.getParameter("phone");
-        String address = req.getParameter("address");
-        float totalPrice = Float.parseFloat(req.getParameter("totalPrice"));
-
         List<Product> products = new ArrayList<>();
 
         if ("create".equals(action)) {
+            String firstName = req.getParameter("firstName");
+            String lastName = req.getParameter("lastName");
+            String phoneNumber = req.getParameter("phone");
+            String address = req.getParameter("address");
+            float totalPrice = Float.parseFloat(req.getParameter("totalPrice"));
+
             if (totalPrice == 0f) {
                 session.setAttribute("errorMessage", "Добавьте хотя бы один товар");
             }
@@ -44,16 +41,11 @@ public class OrderServlet extends HttpServlet {
                 System.out.println(Store.getOrders().get(0).getUser().getName());
                 System.out.println(user.getName());
             }
+            resp.sendRedirect("/orders");
         }
-        resp.sendRedirect("/orders");
-
-//        else if ("complete".equals(action)) {
-//            Store.completeOrder(id);
-//        } else if ("check".equals(action)) {
-//            Store.checkOrder(id);
-//        }
-
-        //resp.sendRedirect("/orders");
+        else if ("exit".equals(action)) {
+            session.invalidate();
+            resp.sendRedirect("/login");
+        }
     }
 }
-//@WebServlet("/orders")

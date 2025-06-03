@@ -8,7 +8,6 @@ public class User {
     private String password;
 
     public User(String user_name, String password,  String mail) {
-        //НУЖЕН СПИСОК ТОВАРОВ ????
         this.id = ++count;
         this.user_name = user_name;
         this.mail = mail;

@@ -28,6 +28,19 @@
 </head>
 <body>
 
+<header class="header">
+  <div class="header-container">
+    <div class="nav-links">
+      <a href="<%= request.getContextPath() %>/products" class="nav-link active">Магазин</a>
+      <a href="<%= request.getContextPath() %>/orders" class="nav-link active">Мои заказы</a>
+    </div>
+    <form method="post" class="logout-container">
+      <input type="hidden" name="action" value="exit"/>
+      <button class="logout-btn active" onclick="logout()">Выйти</button>
+    </form>
+  </div>
+</header>
+
 <h2>Оформление заказа</h2>
 <form method="post">
   <table>
@@ -72,7 +85,7 @@
   </div>
 
   <input type="hidden" name="action" value="create"/>
-  <button type="submit">Оплатить</button>
+  <button class="payButton" type="submit">Оплатить</button>
 </form>
 
 </body>

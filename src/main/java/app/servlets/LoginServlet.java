@@ -12,7 +12,6 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 
 @WebServlet("/")
 public class LoginServlet extends HttpServlet {
@@ -41,7 +40,7 @@ public class LoginServlet extends HttpServlet {
             else if (userName != null && password != null) {
                 for (User user : Store.getUsers()) {
                     if (user.getName().equals(userName) && user.getPassword().equals(password)) {
-                        session.setAttribute("user", user); // где user — это объект User
+                        session.setAttribute("user", user);
                         found = true;
                         resp.sendRedirect("/orders");
                         break;
