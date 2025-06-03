@@ -85,7 +85,7 @@
   </div>
 
   <input type="hidden" name="action" value="create"/>
-  <button class="payButton" type="submit">Оплатить</button>
+  <button class="payButton" type="submit">Оформить заказ</button>
 </form>
 
 </body>

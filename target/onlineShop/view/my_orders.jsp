@@ -23,30 +23,39 @@
     </div>
 </header>
 
-<div class="page-container">
-    <h2>Ваши заказы</h2>
-    <c:forEach var="order" items="${orders}">
-        <div class="order-block">
-            <p><strong>Заказ №:</strong> ${order.id}</p>
-            <p><strong>Имя:</strong> ${order.firstName} ${order.lastName}</p>
-            <p><strong>Телефон:</strong> ${order.phoneNumber}</p>
-            <p><strong>Адрес:</strong> ${order.address}</p>
-            <p><strong>Статус:</strong> ${order.status}</p>
-            <p><strong>Итого:</strong> ${order.totalPrice} ₽</p>
-            <p><strong>Товары:</strong></p>
-            <ul>
-                <c:forEach var="entry" items="${order.products.entrySet()}">
-                    <li>${entry.key.name} — ${entry.value} шт.</li>
-                </c:forEach>
-            </ul>
-            <c:if test="${order.status != 'Отменён'}">
-                <form method="post" action="/my_orders">
-                    <input type="hidden" name="orderId" value="${order.id}" />
-                    <button type="submit" class="cancel-btn">Отменить заказ</button>
-                </form>
-            </c:if>
-        </div>
-    </c:forEach>
+
+
+    <c:choose>
+        <c:when test="${not empty orders}">
+    <div class="page-container">
+        <h2>Ваши заказы</h2>
+        <c:forEach var="order" items="${orders}">
+            <div class="order-block">
+                <p><strong>Заказ №:</strong> ${order.id}</p>
+                <p><strong>Имя:</strong> ${order.firstName} ${order.lastName}</p>
+                <p><strong>Телефон:</strong> ${order.phoneNumber}</p>
+                <p><strong>Адрес:</strong> ${order.address}</p>
+                <p><strong>Статус:</strong> ${order.status}</p>
+                <p><strong>Товары:</strong></p>
+                <ul>
+                    <c:forEach var="entry" items="${order.products.entrySet()}">
+                        <li>${entry.key.name} — ${entry.value} шт.</li>
+                    </c:forEach>
+                </ul>
+                <p><strong>Итого:</strong> ${order.totalPrice} ₽</p>
+                <c:if test="${order.status != 'Отменён'}">
+                    <form method="post" action="/my_orders">
+                        <input type="hidden" name="orderId" value="${order.id}" />
+                        <button type="submit" class="cancel-btn">Отменить заказ</button>
+                    </form>
+                </c:if>
+            </div>
+        </c:forEach>
+        </c:when>
+        <c:otherwise>
+            <p style="color: #4a006e; padding-left: 20px">У вас пока нет заказов</p>
+        </c:otherwise>
+    </c:choose>
 </div>
 </body>
 </html>

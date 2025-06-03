@@ -18,9 +18,8 @@ public class LoginServlet extends HttpServlet {
     public void init() throws ServletException {
         Store.addProduct(new Product("Андроид", "Робот работает за тебя", 999999f));
         Store.addProduct(new Product("Мерседес GLE Coupe d450", "Авто для хасла", 1499999f));
-        Store.addProduct(new Product("Телевизор", "52-дюймовый 4K Smart TV Optima OS WW Xiaomi LG", 499999f));
+        Store.addProduct(new Product("Телевизор 4K Smart TV Optima OS WW Xiaomi LG", "52-дюймовый телевизор", 499999f));
     }
-
 
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         RequestDispatcher requestDispatcher = req.getRequestDispatcher("view/login.jsp");

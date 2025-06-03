@@ -20,7 +20,7 @@ public class OrderServlet extends HttpServlet {
     }
 
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        HttpSession session = req.getSession(false); // false — чтобы не создавать новую сессию
+        HttpSession session = req.getSession(false);
         User user = (User) session.getAttribute("user");
 
         String action = req.getParameter("action");
@@ -50,11 +50,7 @@ public class OrderServlet extends HttpServlet {
                         }
                     }
                 }
-
                 Store.createOrder(new Order(user, products, firstName, lastName, phoneNumber, address, totalPrice));
-                System.out.println(Store.getOrders().get(0).getTotalPrice());
-                System.out.println(Store.getOrders().get(0).getUser().getName());
-                System.out.println(user.getName());
             }
             resp.sendRedirect("/orders");
         }

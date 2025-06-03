@@ -21,13 +21,13 @@
   </div>
 </header>
 
-<h2>Products</h2>
+<h2>Товары</h2>
 <form method="post">
-  <input type="text" name="productName" placeholder="Product name" required />
+  <input type="text" name="productName" placeholder="Название товара" required />
   <input type="hidden" name="action" value="addProduct"/>
-  <input type="text" name="description" placeholder="Product description" required />
-  <input type="number" name="prodPrice" placeholder="Product price" required />
-  <button type="submit">Add Product</button>
+  <input type="text" name="description" placeholder="Описание товара" required />
+  <input type="number" name="prodPrice" placeholder="Цена товара" required />
+  <button type="submit">Добавить товар</button>
 </form>
 
 <table border="1">
