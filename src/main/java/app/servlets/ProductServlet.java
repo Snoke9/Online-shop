@@ -18,6 +18,7 @@ public class ProductServlet extends HttpServlet {
 
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String action = req.getParameter("action");
+        HttpSession session = req.getSession(false);
         if (action.equals("addProduct")) {
             String productName = req.getParameter("productName");
             String productDescription = req.getParameter("description");
@@ -33,6 +34,11 @@ public class ProductServlet extends HttpServlet {
                 int id = Integer.parseInt(idParam);
                 Store.deleteProduct(id);
             }
+        }
+        else if ("exit".equals(action)) {
+            session.invalidate();
+            resp.sendRedirect("/login");
+            return;
         }
         resp.sendRedirect("/products");
     }

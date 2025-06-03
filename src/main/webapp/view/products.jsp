@@ -8,6 +8,19 @@
 </head>
 <body>
 
+<header class="header">
+  <div class="header-container">
+    <div class="nav-links">
+      <a href="<%= request.getContextPath() %>/products" class="nav-link active">Добавление товаров</a>
+      <a href="<%= request.getContextPath() %>/all_orders" class="nav-link active">Заказы</a>
+    </div>
+    <form method="post" class="logout-container">
+      <input type="hidden" name="action" value="exit"/>
+      <button class="logout-btn active" onclick="logout()">Выйти</button>
+    </form>
+  </div>
+</header>
+
 <h2>Products</h2>
 <form method="post">
   <input type="text" name="productName" placeholder="Product name" required />

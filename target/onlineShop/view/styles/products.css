@@ -13,7 +13,6 @@ h2 {
 form {
     margin: 20px auto;
     padding: 20px;
-    background: #ede3ff;
     border-radius: 10px;
     max-width: 500px;
     box-shadow: 0 4px 8px rgba(93, 62, 140, 0.2);
@@ -77,4 +76,66 @@ a button {
 
 a button:hover {
     background-color: #875de0;
+}
+
+.header {
+    background: linear-gradient(135deg, #5b2a92 0%, #4b006e 100%);
+    color: white;
+    padding: 15px 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    width: 100%;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.nav-links {
+    display: flex;
+    gap: 15px;
+}
+
+.nav-link {
+    color: white;
+    text-decoration: none;
+    padding: 8px 15px;
+    border-radius: 20px;
+    transition: all 0.3s;
+    font-weight: 500;
+}
+
+.nav-link:hover, .logout-btn:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    transform: translateY(-2px);
+}
+
+.nav-link.active, .logout-btn.active {
+    background-color: #9e6cfb;
+}
+
+.logout-container {
+    display: flex;
+    gap: 15px;
+    margin: 0;
+}
+
+.logout-btn {
+    all: unset;
+    display: inline-block;
+    background-color: transparent;
+    color: white;
+    padding: 8px 15px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.3s;
+    font-size: 16px;
+    text-align: center;
 }
