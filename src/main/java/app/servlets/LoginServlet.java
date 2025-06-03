@@ -13,7 +13,7 @@ import jakarta.servlet.http.HttpSession;
 
 import java.io.IOException;
 
-@WebServlet("/")
+@WebServlet("/login")
 public class LoginServlet extends HttpServlet {
     public void init() throws ServletException {
         Store.addProduct(new Product("Андроид", "Робот работает за тебя", 999999f));
@@ -35,6 +35,7 @@ public class LoginServlet extends HttpServlet {
             String password = req.getParameter("password");
             boolean found = false;
             if (userName.equals("admin") && password.equals("admin")) {
+                session.setAttribute("user", new User("admin", "admin", "admin@admin.com"));
                 resp.sendRedirect("/products");
             }
             else if (userName != null && password != null) {

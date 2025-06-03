@@ -6,12 +6,13 @@ import app.entities.User;
 import app.model.Store;
 
 import jakarta.servlet.*;
+import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.*;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
-
+@WebServlet("/orders")
 public class OrderServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         RequestDispatcher requestDispatcher = req.getRequestDispatcher("view/orders.jsp");
@@ -20,10 +21,10 @@ public class OrderServlet extends HttpServlet {
 
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HttpSession session = req.getSession(false); // false — чтобы не создавать новую сессию
-        User user = (User) session.getAttribute("user");;
+        User user = (User) session.getAttribute("user");
 
         String action = req.getParameter("action");
-        List<Product> products = new ArrayList<>();
+        Map<Product, Integer> products = new HashMap<>();
 
         if ("create".equals(action)) {
             String firstName = req.getParameter("firstName");
@@ -36,6 +37,20 @@ public class OrderServlet extends HttpServlet {
                 session.setAttribute("errorMessage", "Добавьте хотя бы один товар");
             }
             else {
+                for (Product product : Store.getProducts()) {
+                    String paramName = "quantity_" + product.getId();
+                    String qtyStr = req.getParameter(paramName);
+                    if (qtyStr != null) {
+                        try {
+                            int quantity = Integer.parseInt(qtyStr);
+                            if (quantity > 0) {
+                                products.put(product, quantity);
+                            }
+                        } catch (NumberFormatException e) {
+                        }
+                    }
+                }
+
                 Store.createOrder(new Order(user, products, firstName, lastName, phoneNumber, address, totalPrice));
                 System.out.println(Store.getOrders().get(0).getTotalPrice());
                 System.out.println(Store.getOrders().get(0).getUser().getName());

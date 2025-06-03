@@ -1,25 +1,25 @@
 package app.entities;
 import java.util.List;
+import java.util.Map;
 
 public class Order {
     private static int count = 0;
     private int id;
-    private List<Product> products;
+    private Map<Product, Integer> products;
     private String address;
     private User user;
     private String phoneNumber;
     private String firstName;
     private String lastName;
     private Float totalPrice;
-    private boolean completed;
+    private String status = "В обработке";
 
-    public Order(User user, List<Product> products, String firstName, String lastName, String phoneNumber, String address, Float totalPrice) {
+    public Order(User user, Map<Product, Integer> products, String firstName, String lastName, String phoneNumber, String address, Float totalPrice) {
         this.id = ++count;
         this.user = user;
         this.products = products;
         this.address = address;
         this.totalPrice = totalPrice;
-        this.completed = false;
         this.firstName = firstName;
         this.lastName = lastName;
         this.phoneNumber = phoneNumber;
@@ -27,8 +27,8 @@ public class Order {
 
     public int getId() { return id; }
 
-    public List<app.entities.Product> getProducts() { return products; }
-    public void setProducts(List<app.entities.Product> products) {  this.products = products; }
+    public Map<Product, Integer>  getProducts() { return products; }
+    public void setProducts(Map<Product, Integer> products) {  this.products = products; }
 
     public String getAddress() { return address; }
     public void setAddress(String address) {
@@ -63,8 +63,8 @@ public class Order {
         this.phoneNumber = phoneNumber;
     }
 
-    public boolean isCompleted() { return completed; }
-    public void complete() { this.completed = true; }
+    public String getStatus() { return status; }
+    public void setStatus(String status) { this.status = status; }
 
     public User getUser() {
         return user;

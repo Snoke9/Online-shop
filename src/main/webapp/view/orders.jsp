@@ -31,8 +31,8 @@
 <header class="header">
   <div class="header-container">
     <div class="nav-links">
-      <a href="<%= request.getContextPath() %>/products" class="nav-link active">Магазин</a>
-      <a href="<%= request.getContextPath() %>/orders" class="nav-link active">Мои заказы</a>
+      <a href="<%= request.getContextPath() %>/orders" class="nav-link active">Магазин</a>
+      <a href="<%= request.getContextPath() %>/my_orders" class="nav-link active">Мои заказы</a>
     </div>
     <form method="post" class="logout-container">
       <input type="hidden" name="action" value="exit"/>

@@ -1,0 +1,10 @@
+app\servlets\MyOrdersServlet.class
+app\servlets\RegisterServlet.class
+app\entities\Order.class
+app\model\Store.class
+app\servlets\ProductServlet.class
+app\entities\Product.class
+app\entities\IdGenerator.class
+app\servlets\LoginServlet.class
+app\servlets\OrderServlet.class
+app\entities\User.class

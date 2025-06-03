@@ -50,4 +50,14 @@
         <servlet-name>register</servlet-name>
         <url-pattern>/register</url-pattern>
     </servlet-mapping>
+
+    <servlet>
+        <servlet-name>my_orders</servlet-name>
+        <servlet-class>app.servlets.MyOrdersServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>my_orders</servlet-name>
+        <url-pattern>/my_orders</url-pattern>
+    </servlet-mapping>
 </web-app>

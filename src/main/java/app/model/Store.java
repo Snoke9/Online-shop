@@ -48,23 +48,23 @@ public class Store {
         return orders.removeIf(order -> order.getId() == id);
     }
 
-    public static boolean checkOrder(int orderId) {
-        for (Order o : orders) {
-            if (o.getId() == orderId) {
-                return o.isCompleted();
-            }
-        }
-        return false;
-    }
-
-    public static void completeOrder(int orderId) {
-        for (Order o : orders) {
-            if (o.getId() == orderId) {
-                o.complete();
-                break;
-            }
-        }
-    }
+//    public static boolean checkOrder(int orderId) {
+//        for (Order o : orders) {
+//            if (o.getId() == orderId) {
+//                return o.isCompleted();
+//            }
+//        }
+//        return false;
+//    }
+//
+//    public static void completeOrder(int orderId) {
+//        for (Order o : orders) {
+//            if (o.getId() == orderId) {
+//                o.complete();
+//                break;
+//            }
+//        }
+//    }
 
     public Order getOrder(int id) {
         for (Order order : orders) {
@@ -91,5 +91,15 @@ public class Store {
     public static List<User> getUsers() {
         return users;
     }
+
+    public static void cancelOrderById(int id) {
+        for (Order order : orders) {
+            if (order.getId() == id) {
+                order.setStatus("Отменён");
+                break;
+            }
+        }
+    }
+
 
 }
